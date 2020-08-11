@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-sm">
                         <div class="table-wrap">
-                            <div class="dataTables_wrapper dt-bootstrap4">
+                            <div class="dataTables_wrapper dt-bootstrap4 table-responsive">
                                 <?= GridView::widget([
                                     'dataProvider' => $dataProvider,
                                     'layout' => '
@@ -95,7 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     
 										'level',
 										'category',
-										'log_time',
+										'log_time:datetime',
 										'prefix:ntext',
 										'message:ntext',
                                         [
