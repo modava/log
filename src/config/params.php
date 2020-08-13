@@ -2,11 +2,6 @@
 use modava\log\LogModule;
 
 return [
-    'availableLocales' => [
-        'vi' => 'Tiếng Việt',
-        'en' => 'English',
-        'jp' => 'Japan',
-    ],
     'logName' => 'Log',
     'logVersion' => '1.0',
     'status' => [
