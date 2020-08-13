@@ -3,6 +3,7 @@
 namespace modava\log\controllers;
 
 use backend\components\MyComponent;
+use modava\location\LocationModule;
 use yii\db\Exception;
 use Yii;
 use yii\helpers\Html;
@@ -199,6 +200,6 @@ class SystemLogController extends MyLogController
             return $model;
         }
 
-        throw new NotFoundHttpException(Yii::t('log', 'The requested page does not exist.'));
+        throw new NotFoundHttpException(LocationModule::t('log', 'The requested page does not exist.'));
     }
 }
