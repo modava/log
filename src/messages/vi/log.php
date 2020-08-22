@@ -10,5 +10,13 @@ return [
     'Next' => 'Tiếp',
     'Status' => 'Trạng thái',
     'Created At' => 'Ngày tạo',
-    'Actions' => 'Hành động'
+    'Actions' => 'Hành động',
+    'From Date' => 'Từ ngày',
+    'To Date' => 'Đến ngày',
+    'Phone' => 'Số điện thoại',
+    'Status Call' => 'Trạng thái cuộc gọi',
+    'System Logs' => 'Lỗi hệ thống',
+    'System Log' => 'Lỗi hệ thống',
+    'Log Time' => 'Thời gian',
+    'Message' => 'Nội dung',
 ];

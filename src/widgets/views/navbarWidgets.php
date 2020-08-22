@@ -10,4 +10,10 @@ use modava\log\LogModule;
             <i class="ion ion-ios-locate"></i><?= LogModule::t('log', 'System Log'); ?>
         </a>
     </li>
+    <li class="nav-item mb-5">
+        <a class="nav-link link-icon-left<?php if (Yii::$app->controller->id == 'voip24h-log') echo ' active' ?>"
+           href="<?= Url::toRoute(['/log/voip24h-log']); ?>">
+            <i class="ion ion-ios-locate"></i><?= LogModule::t('log', 'Voip24h Log'); ?>
+        </a>
+    </li>
 </ul>
