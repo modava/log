@@ -20,7 +20,6 @@ class LogCustomAsset extends AssetBundle
         'position' => \yii\web\View::POS_END
     );
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        'backend\assets\AppAsset',
     ];
 }
