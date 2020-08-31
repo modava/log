@@ -8,7 +8,10 @@ use modava\log\models\search\Voip24hLogSearch;
 /* @var $model Voip24hLogSearch */
 ?>
 <?php $form = ActiveForm::begin([
-    'method' => 'GET'
+    'method' => 'GET',
+    'options' => [
+        'class' => 'voip-log-fsearch'
+    ]
 ]) ?>
     <div class="row">
         <div class="col-lg-3 col-md-6 col-12">

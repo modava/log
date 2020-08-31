@@ -3,14 +3,14 @@
 use modava\log\LogModule;
 use modava\log\widgets\NavbarWidgets;
 use yii\helpers\Html;
-use yii\grid\GridView;
+use common\grid\MyGridView;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel modava\log\models\search\Voip24hLogSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = LogModule::t('log', 'Voip24h Logs');
+$this->title = LogModule::t('log', 'Voip24h Log');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
     <div class="container-fluid px-xxl-25 px-xl-10">
@@ -30,39 +30,37 @@ $this->params['breadcrumbs'][] = $this->title;
         <!-- Row -->
         <div class="row">
             <div class="col-xl-12">
-                <section class="hk-sec-wrapper">
+                <section class="hk-sec-wrapper index">
 
-                    <?php Pjax::begin(); ?>
+                    <?php Pjax::begin(['id' => 'voip-log-pjax', 'timeout' => false, 'enablePushState' => true, 'clientOptions' => ['method' => 'GET']]); ?>
                     <div class="row">
                         <div class="col-sm">
                             <div class="table-wrap">
                                 <div class="dataTables_wrapper dt-bootstrap4">
-                                    <?= GridView::widget([
+                                    <?= MyGridView::widget([
                                         'dataProvider' => $dataProvider,
                                         'layout' => '
-                                        {errors}
-                                        <div class="row">
-                                            <div class="col-sm-12 table-responsive">
+                                            {errors}
+                                            <div class="pane-single-table">
                                                 {items}
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-12 col-md-5">
-                                                <div class="dataTables_info" role="status" aria-live="polite">
-                                                    <ul class="pagination">
-                                                        ' . $searchModel->getPrevPage() . $searchModel->getNextPage() . '
-                                                    </ul>
+                                            <div class="pager-wrap clearfix">
+                                                <div class="summary pull-right">
+                                                    Tổng ' . $searchModel->total . '
                                                 </div>
+                                                <ul class="pagination">
+                                                    ' . $searchModel->getPrevPage() . $searchModel->getNextPage() . '
+                                                </ul>
                                             </div>
-                                            <div class="col-sm-12 col-md-7">
-                                                <div class="dataTables_paginate paging_simple_numbers">
-                                                    <div class="summary">
-                                                        Tổng ' . $searchModel->total . '
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ',
+                                        ',
+                                        'tableOptions' => [
+                                            'id' => 'dataTable',
+                                            'class' => 'dt-grid dt-widget pane-hScroll',
+                                        ],
+                                        'myOptions' => [
+                                            'class' => 'dt-grid-content my-content pane-vScroll',
+                                            'data-minus' => '{"0":105,"1":".hk-navbar","2":".nav-tabs","3":".hk-pg-header","4":".hk-footer-wrap","5":".voip-log-fsearch"}'
+                                        ],
                                         'pager' => [
                                             'firstPageLabel' => LogModule::t('log', 'First'),
                                             'lastPageLabel' => LogModule::t('log', 'Last'),
@@ -80,10 +78,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'pageCssClass' => 'page-item',
 
                                             // Customzing CSS class for navigating link
-                                            'prevPageCssClass' => 'paginate_button page-item',
-                                            'nextPageCssClass' => 'paginate_button page-item',
-                                            'firstPageCssClass' => 'paginate_button page-item',
-                                            'lastPageCssClass' => 'paginate_button page-item',
+                                            'prevPageCssClass' => 'paginate_button page-item prev',
+                                            'nextPageCssClass' => 'paginate_button page-item next',
+                                            'firstPageCssClass' => 'paginate_button page-item first',
+                                            'lastPageCssClass' => 'paginate_button page-item last',
                                         ],
                                         'columns' => [
                                             [
@@ -149,7 +147,13 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 <?php
+$urlChangePageSize = \yii\helpers\Url::toRoute(['perpage']);
 $script = <<< JS
+var customPjax = new myGridView();
+customPjax.init({
+    pjaxId: '#voip-log-pjax',
+    urlChangePageSize: '$urlChangePageSize',
+});
 $('body').on('click', '.pagination .page-link', function(e){
     e.preventDefault();
     var start = $(this).attr('data-start') || null;

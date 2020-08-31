@@ -4,15 +4,14 @@ namespace modava\log\controllers;
 
 use backend\components\MyComponent;
 use modava\location\LocationModule;
-use yii\db\Exception;
-use Yii;
-use yii\helpers\Html;
-use yii\filters\VerbFilter;
-use yii\web\NotFoundHttpException;
-use modava\log\LogModule;
 use modava\log\components\MyLogController;
-use modava\log\models\SystemLog;
 use modava\log\models\search\SystemLogSearch;
+use modava\log\models\SystemLog;
+use Yii;
+use yii\db\Exception;
+use yii\filters\VerbFilter;
+use yii\helpers\Html;
+use yii\web\NotFoundHttpException;
 
 /**
  * SystemLogController implements the CRUD actions for SystemLog model.
@@ -43,14 +42,7 @@ class SystemLogController extends MyLogController
         $searchModel = new SystemLogSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        if (MyComponent::hasCookies('pageSize')) {
-            $dataProvider->pagination->pageSize = MyComponent::getCookies('pageSize');
-        } else {
-            $dataProvider->pagination->pageSize = 10;
-        }
-        $pageSize = $dataProvider->pagination->pageSize;
-        $totalCount = $dataProvider->totalCount;
-        $totalPage = (($totalCount + $pageSize - 1) / $pageSize);
+        $totalPage = $this->getTotalPage($dataProvider);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -183,6 +175,33 @@ class SystemLogController extends MyLogController
             ]);
         }
         return $this->redirect(['index']);
+    }
+
+    /**
+     * @param $perpage
+     */
+    public function actionPerpage($perpage)
+    {
+        MyComponent::setCookies('pageSize', $perpage);
+    }
+
+    /**
+     * @param $dataProvider
+     * @return float|int
+     */
+    public function getTotalPage($dataProvider)
+    {
+        if (MyComponent::hasCookies('pageSize')) {
+            $dataProvider->pagination->pageSize = MyComponent::getCookies('pageSize');
+        } else {
+            $dataProvider->pagination->pageSize = 10;
+        }
+
+        $pageSize = $dataProvider->pagination->pageSize;
+        $totalCount = $dataProvider->totalCount;
+        $totalPage = (($totalCount + $pageSize - 1) / $pageSize);
+
+        return $totalPage;
     }
 
     /**
