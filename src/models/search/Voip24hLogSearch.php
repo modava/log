@@ -3,7 +3,7 @@
 namespace modava\log\models\search;
 
 use GuzzleHttp\Client;
-use modava\log\LogModule;
+use Yii;
 use yii\base\Model;
 use yii\data\ArrayDataProvider;
 use yii\helpers\Html;
