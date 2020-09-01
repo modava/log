@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel modava\log\models\search\Voip24hLogSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = LogModule::t('log', 'Voip24h Log');
+$this->title = Yii::t('backend', 'Voip24h Log');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
     <div class="container-fluid px-xxl-25 px-xl-10">
@@ -62,10 +62,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'data-minus' => '{"0":105,"1":".hk-navbar","2":".nav-tabs","3":".hk-pg-header","4":".hk-footer-wrap","5":".voip-log-fsearch"}'
                                         ],
                                         'pager' => [
-                                            'firstPageLabel' => LogModule::t('log', 'First'),
-                                            'lastPageLabel' => LogModule::t('log', 'Last'),
-                                            'prevPageLabel' => LogModule::t('log', 'Previous'),
-                                            'nextPageLabel' => LogModule::t('log', 'Next'),
+                                            'firstPageLabel' => Yii::t('backend', 'First'),
+                                            'lastPageLabel' => Yii::t('backend', 'Last'),
+                                            'prevPageLabel' => Yii::t('backend', 'Previous'),
+                                            'nextPageLabel' => Yii::t('backend', 'Next'),
                                             'maxButtonCount' => 5,
 
                                             'options' => ['tag' => 'ul',
@@ -110,12 +110,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                             [
                                                 'attribute' => 'src',
-                                                'label' => LogModule::t('log', 'From'),
+                                                'label' => Yii::t('backend', 'From'),
                                                 'headerOptions' => ['width' => 120]
                                             ],
                                             [
                                                 'attribute' => 'dst',
-                                                'label' => LogModule::t('log', 'To'),
+                                                'label' => Yii::t('backend', 'To'),
                                                 'value' => function ($model) {
                                                     return $model->dst;
                                                 },
@@ -123,7 +123,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             ],
                                             [
                                                 'attribute' => 'status',
-                                                'label' => LogModule::t('log', 'Status'),
+                                                'label' => Yii::t('backend', 'Status'),
                                                 'headerOptions' => ['width' => 150]
                                             ],
                                             [
@@ -132,7 +132,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     if ($model->billsec == 0) return null;
                                                     return gmdate("H:i:s", $model->billsec);
                                                 },
-                                                'label' => LogModule::t('log', 'Time'),
+                                                'label' => Yii::t('backend', 'Time'),
                                                 'headerOptions' => ['width' => 150]
                                             ],
                                         ]

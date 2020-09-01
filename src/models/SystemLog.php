@@ -51,12 +51,12 @@ class SystemLog extends SystemLogTable
     public function attributeLabels()
     {
         return [
-            'id' => LogModule::t('log', 'ID'),
-            'level' => LogModule::t('log', 'Level'),
-            'category' => LogModule::t('log', 'Category'),
-            'log_time' => LogModule::t('log', 'Log Time'),
-            'prefix' => LogModule::t('log', 'Prefix'),
-            'message' => LogModule::t('log', 'Message'),
+            'id' => Yii::t('backend', 'ID'),
+            'level' => Yii::t('backend', 'Level'),
+            'category' => Yii::t('backend', 'Category'),
+            'log_time' => Yii::t('backend', 'Log Time'),
+            'prefix' => Yii::t('backend', 'Prefix'),
+            'message' => Yii::t('backend', 'Message'),
         ];
     }
 

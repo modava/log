@@ -8,12 +8,12 @@ use modava\log\LogModule;
 /* @var $this yii\web\View */
 /* @var $model modava\log\models\SystemLog */
 
-$this->title = LogModule::t('log', 'Update : {name}', [
+$this->title = Yii::t('backend', 'Update : {name}', [
     'name' => $model->id,
 ]);
-$this->params['breadcrumbs'][] = ['label' => LogModule::t('log', 'System Logs'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'System Logs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = LogModule::t('log', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
 ?>
 <div class="container-fluid px-xxl-25 px-xl-10">
     <?= NavbarWidgets::widget(); ?>
@@ -24,8 +24,8 @@ $this->params['breadcrumbs'][] = LogModule::t('log', 'Update');
                         class="ion ion-md-apps"></span></span><?= Html::encode($this->title) ?>
         </h4>
         <a class="btn btn-outline-light" href="<?= Url::to(['create']); ?>"
-           title="<?= LogModule::t('log', 'Create'); ?>">
-            <i class="fa fa-plus"></i> <?= LogModule::t('log', 'Create'); ?></a>
+           title="<?= Yii::t('backend', 'Create'); ?>">
+            <i class="fa fa-plus"></i> <?= Yii::t('backend', 'Create'); ?></a>
     </div>
     <!-- /Title -->
 

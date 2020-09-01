@@ -55,10 +55,10 @@ class Voip24hLogSearch extends Model
     public function attributeLabels()
     {
         return [
-            'search' => LogModule::t('log', 'Phone'),
-            'from' => LogModule::t('log', 'From Date'),
-            'to' => LogModule::t('log', 'To Date'),
-            'status' => LogModule::t('log', 'Status Call'),
+            'search' => Yii::t('backend', 'Phone'),
+            'from' => Yii::t('backend', 'From Date'),
+            'to' => Yii::t('backend', 'To Date'),
+            'status' => Yii::t('backend', 'Status Call'),
         ];
     }
 

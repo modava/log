@@ -11,7 +11,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel modava\log\models\search\SystemLogSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = LogModule::t('log', 'System Logs');
+$this->title = Yii::t('backend', 'System Logs');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?= ToastrWidget::widget(['key' => 'toastr-' . $searchModel->toastr_key . '-index']) ?>
@@ -64,10 +64,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'class' => 'summary pull-right',
                                         ],
                                         'pager' => [
-                                            'firstPageLabel' => LogModule::t('log', 'First'),
-                                            'lastPageLabel' => LogModule::t('log', 'Last'),
-                                            'prevPageLabel' => LogModule::t('log', 'Previous'),
-                                            'nextPageLabel' => LogModule::t('log', 'Next'),
+                                            'firstPageLabel' => Yii::t('backend', 'First'),
+                                            'lastPageLabel' => Yii::t('backend', 'Last'),
+                                            'prevPageLabel' => Yii::t('backend', 'Previous'),
+                                            'nextPageLabel' => Yii::t('backend', 'Next'),
                                             'maxButtonCount' => 5,
 
                                             'options' => [
@@ -92,37 +92,48 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 'class' => 'yii\grid\SerialColumn',
                                                 'header' => 'STT',
                                                 'headerOptions' => [
-                                                    'width' => 60,
+                                                    'width' => 40,
                                                     'rowspan' => 2
                                                 ],
                                                 'filterOptions' => [
                                                     'class' => 'd-none',
                                                 ],
                                             ],
+                                            [
+                                                'attribute' => 'level',
+                                                'headerOptions' => [
+                                                    'width' => 60
+                                                ],
+                                            ],
 
-                                            'level',
                                             'category',
-                                            'log_time:datetime',
-                                            'prefix:ntext',
-                                            'message:ntext',
+                                            [
+                                                'attribute' => 'log_time',
+                                                'format' => 'datetime',
+                                                'headerOptions' => [
+                                                    'width' => 120
+                                                ],
+                                            ],
+                                            'prefix:html',
+                                            'message:html',
                                             [
                                                 'class' => 'yii\grid\ActionColumn',
-                                                'header' => LogModule::t('log', 'Actions'),
+                                                'header' => Yii::t('backend', 'Actions'),
                                                 'template' => '{update} {delete}',
                                                 'buttons' => [
                                                     'update' => function ($url, $model) {
                                                         return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
-                                                            'title' => LogModule::t('log', 'Update'),
-                                                            'alia-label' => LogModule::t('log', 'Update'),
+                                                            'title' => Yii::t('backend', 'Update'),
+                                                            'alia-label' => Yii::t('backend', 'Update'),
                                                             'data-pjax' => 0,
                                                             'class' => 'btn btn-info btn-xs'
                                                         ]);
                                                     },
                                                     'delete' => function ($url, $model) {
                                                         return Html::a('<span class="glyphicon glyphicon-trash"></span>', 'javascript:;', [
-                                                            'title' => LogModule::t('log', 'Delete'),
+                                                            'title' => Yii::t('backend', 'Delete'),
                                                             'class' => 'btn btn-danger btn-xs btn-del',
-                                                            'data-title' => LogModule::t('log', 'Delete?'),
+                                                            'data-title' => Yii::t('backend', 'Delete?'),
                                                             'data-pjax' => 0,
                                                             'data-url' => $url,
                                                             'btn-success-class' => 'success-delete',
@@ -132,7 +143,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     }
                                                 ],
                                                 'headerOptions' => [
-                                                    'width' => 150,
+                                                    'width' => 100,
                                                 ],
                                             ],
                                         ],

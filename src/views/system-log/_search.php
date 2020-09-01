@@ -32,8 +32,8 @@ use modava\log\LogModule;
     <?php // echo $form->field($model, 'message') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(LogModule::t('log', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(LogModule::t('log', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::t('backend', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -11,7 +11,7 @@ use modava\log\LogModule;
 /* @var $model modava\log\models\SystemLog */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => LogModule::t('log', 'System Logs'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'System Logs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -26,13 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
         </h4>
         <p>
             <a class="btn btn-outline-light" href="<?= Url::to(['create']); ?>"
-                title="<?= LogModule::t('log', 'Create'); ?>">
-                <i class="fa fa-plus"></i> <?= LogModule::t('log', 'Create'); ?></a>
-            <?= Html::a(LogModule::t('log', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-            <?= Html::a(LogModule::t('log', 'Delete'), ['delete', 'id' => $model->id], [
+                title="<?= Yii::t('backend', 'Create'); ?>">
+                <i class="fa fa-plus"></i> <?= Yii::t('backend', 'Create'); ?></a>
+            <?= Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
                 'data' => [
-                    'confirm' => LogModule::t('log', 'Are you sure you want to delete this item?'),
+                    'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
                     'method' => 'post',
                 ],
             ]) ?>
@@ -55,11 +55,11 @@ $this->params['breadcrumbs'][] = $this->title;
 						'message:ntext',
                         [
                             'attribute' => 'userCreated.userProfile.fullname',
-                            'label' => LogModule::t('log', 'Created By')
+                            'label' => Yii::t('backend', 'Created By')
                         ],
                         [
                             'attribute' => 'userUpdated.userProfile.fullname',
-                            'label' => LogModule::t('log', 'Updated By')
+                            'label' => Yii::t('backend', 'Updated By')
                         ],
                     ],
                 ]) ?>
