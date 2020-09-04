@@ -96,6 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             ],
                                             [
                                                 'attribute' => 'category',
+                                                'format' => 'html',
                                                 'headerOptions' => [
                                                     'width' => 70
                                                 ],
