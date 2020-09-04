@@ -89,63 +89,32 @@ $this->params['breadcrumbs'][] = $this->title;
                                         ],
                                         'columns' => [
                                             [
-                                                'class' => 'yii\grid\SerialColumn',
-                                                'header' => 'STT',
+                                                'attribute' => 'level',
                                                 'headerOptions' => [
-                                                    'width' => 40,
-                                                    'rowspan' => 2
-                                                ],
-                                                'filterOptions' => [
-                                                    'class' => 'd-none',
+                                                    'width' => 50
                                                 ],
                                             ],
                                             [
-                                                'attribute' => 'level',
+                                                'attribute' => 'category',
                                                 'headerOptions' => [
-                                                    'width' => 60
+                                                    'width' => 70
                                                 ],
                                             ],
-
-                                            'category',
                                             [
                                                 'attribute' => 'log_time',
                                                 'format' => 'datetime',
                                                 'headerOptions' => [
+                                                    'width' => 90
+                                                ],
+                                            ],
+                                            [
+                                                'attribute' => 'prefix',
+                                                'format' => 'html',
+                                                'headerOptions' => [
                                                     'width' => 120
                                                 ],
                                             ],
-                                            'prefix:html',
                                             'message:html',
-                                            [
-                                                'class' => 'yii\grid\ActionColumn',
-                                                'header' => Yii::t('backend', 'Actions'),
-                                                'template' => '{update} {delete}',
-                                                'buttons' => [
-                                                    'update' => function ($url, $model) {
-                                                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
-                                                            'title' => Yii::t('backend', 'Update'),
-                                                            'alia-label' => Yii::t('backend', 'Update'),
-                                                            'data-pjax' => 0,
-                                                            'class' => 'btn btn-info btn-xs'
-                                                        ]);
-                                                    },
-                                                    'delete' => function ($url, $model) {
-                                                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', 'javascript:;', [
-                                                            'title' => Yii::t('backend', 'Delete'),
-                                                            'class' => 'btn btn-danger btn-xs btn-del',
-                                                            'data-title' => Yii::t('backend', 'Delete?'),
-                                                            'data-pjax' => 0,
-                                                            'data-url' => $url,
-                                                            'btn-success-class' => 'success-delete',
-                                                            'btn-cancel-class' => 'cancel-delete',
-                                                            'data-placement' => 'top'
-                                                        ]);
-                                                    }
-                                                ],
-                                                'headerOptions' => [
-                                                    'width' => 100,
-                                                ],
-                                            ],
                                         ],
                                     ]); ?>
                                 </div>
