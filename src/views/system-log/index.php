@@ -98,21 +98,27 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 'attribute' => 'category',
                                                 'format' => 'html',
                                                 'headerOptions' => [
-                                                    'width' => 100
+                                                    'width' => 150
+                                                ],
+                                                'contentOptions' => [
+                                                    'style' => 'overflow-wrap:break-word'
                                                 ],
                                             ],
                                             [
                                                 'attribute' => 'log_time',
                                                 'format' => 'datetime',
                                                 'headerOptions' => [
-                                                    'width' => 90
+                                                    'width' => 100
                                                 ],
                                             ],
                                             [
                                                 'attribute' => 'prefix',
                                                 'format' => 'html',
                                                 'headerOptions' => [
-                                                    'width' => 120
+                                                    'width' => 150
+                                                ],
+                                                'contentOptions' => [
+                                                    'style' => 'overflow-wrap:break-word'
                                                 ],
                                             ],
                                             'message:html',
