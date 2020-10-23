@@ -104,7 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 'format' => 'raw',
                                                 'value' => function ($model) {
                                                     if (!isset($model->recording) || $model->recording == '') return null;
-                                                    return Html::tag('audio', '<source src="' . $model->recording . '">', ['controls' => '',]);
+                                                    return '<button type="button" class="btn btn-sm btn-primary" data-url="'. $model->recording .'"  data-toggle="modal" data-target="#recordAudio"><i class="fa fa-play-circle"></i></button>';
                                                 }
                                             ],
 
@@ -146,6 +146,25 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal" id="recordAudio" tabindex="-1" role="dialog" aria-labelledby="recordAudio" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="recordAudioTitle">Recording</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <?php
 $urlChangePageSize = \yii\helpers\Url::toRoute(['perpage']);
 $script = <<< JS
@@ -163,6 +182,17 @@ $('body').on('click', '.pagination .page-link', function(e){
         $('#search-log').trigger('click');
     }
     return false;
+});
+
+$('#recordAudio').on('show.bs.modal', function (event) {
+    $(this).find('.modal-body').html(''); // refresh body
+}).on('shown.bs.modal', function (event) {
+     var modal = $(this)
+      var button = $(event.relatedTarget)
+      var url = button.data('url')
+      modal.find('.modal-body').html('<audio controls autoplay><source src="'+ url +'"></audio>');
+}).on('hide.bs.modal', function () {
+    $(this).find('.modal-body').html(''); // refresh body
 });
 JS;
 $this->registerJs($script, \yii\web\View::POS_END);
