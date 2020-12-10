@@ -14,6 +14,7 @@ use yii\db\Exception;
  *
  * @property int $id
  * @property string $table_name
+ * @property string $table_key
  * @property int $action 0: Create, 1: Update, 2: Delete
  * @property array $data
  * @property int $created_at
@@ -50,7 +51,7 @@ class Logs extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['table_name', 'action', 'data'], 'required'],
+            [['table_name', 'table_key', 'action', 'data'], 'required'],
             [['action', 'created_at', 'created_by'], 'integer'],
             [['data'], 'safe'],
             [['table_name'], 'string', 'max' => 255],
@@ -65,6 +66,7 @@ class Logs extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('backend', 'ID'),
             'table_name' => Yii::t('backend', 'Table Name'),
+            'table_key' => Yii::t('backend', 'Table Key'),
             'action' => Yii::t('backend', 'Action'),
             'data' => Yii::t('backend', 'Data'),
             'created_at' => Yii::t('backend', 'Created At'),
@@ -80,11 +82,12 @@ class Logs extends \yii\db\ActiveRecord
         return $user;
     }
 
-    public static function quickCreate($table_name = null, $action = null, $data = null)
+    public static function quickCreate($table_name = null, $table_key = null, $action = null, $data = null)
     {
         if ($action != null && !array_key_exists($action, self::ACTION)) $action = self::NONE_ACTION;
         $attributes = [
             'table_name' => $table_name,
+            'table_key' => $table_key,
             'action' => $action,
             'data' => $data,
             'created_at' => time(),
