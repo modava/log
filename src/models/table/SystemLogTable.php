@@ -2,11 +2,10 @@
 
 namespace modava\log\models\table;
 
-use cheatsheet\Time;
+use backend\components\MyModel;
 use Yii;
-use yii\db\ActiveRecord;
 
-class SystemLogTable extends \yii\db\ActiveRecord
+class SystemLogTable extends MyModel
 {
     public static function tableName()
     {
