@@ -22,6 +22,7 @@ class m200926_074618_create_table_logs extends Migration
             $this->createTable('logs', [
                 'id' => $this->bigPrimaryKey(),
                 'table_name' => $this->string(255)->notNull(),
+                'table_key' => $this->integer(11)->null(),
                 'action' => $this->integer(11)->notNull()->comment('0: -, 1: Create, 2: Update, 3: Delete'),
                 'data' => $this->json()->notNull(),
                 'created_at' => $this->integer(11)->null(),
